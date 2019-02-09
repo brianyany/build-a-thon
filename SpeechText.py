@@ -37,7 +37,7 @@ stop_listening = r.listen_in_background(mic, callback)
 # `stop_listening` is now a function that, when called, stops background listening
 
 # do some unrelated computations for 60 seconds
-for _ in range(600): time.sleep(0.1)  # we're still listening even though the main thread is doing other things
+for _ in range(60): time.sleep(0.1)  # we're still listening even though the main thread is doing other things
 
 print("We stopped listening.")
 # calling this function requests that the background listener stop listening
