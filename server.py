@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #server.py on pi
 
 import socket               # Import socket module
@@ -47,5 +48,5 @@ while True:
       print ("response given")
    else:
       c.send(json.dumps('invalid').encode('utf-8'))
-      
+
    c.close()                # Close the connection
