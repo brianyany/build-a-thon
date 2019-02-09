@@ -13,35 +13,35 @@ host = "172.16.117.108" # Get local machine name
 port = 12000                  # Reserve a port for your service.
 s.bind((host, port))        # Bind to the port
 
-def my_callback(self):
-   print("ir!!!")
-   c.send(json.dumps('irdetected').encode('utf-8'))
+# def my_callback(self):
+#    print("ir!!!")
+#    c.send(json.dumps('irdetected').encode('utf-8'))
 
-def ir_monitor():
-   s = socket.socket()         # Create a socket object
-   host = "172.16.117.108" # Get local machine name
-   port = 13999                  # Reserve a port for your service.
-   s.bind((host, port))        # Bind to the port
+# def ir_monitor():
+#    s = socket.socket()         # Create a socket object
+#    host = "172.16.117.108" # Get local machine name
+#    port = 13999                  # Reserve a port for your service.
+#    s.bind((host, port))        # Bind to the port
 
-   print ('IR Monitor connection waiting')
+#    print ('IR Monitor connection waiting')
 
-   s.listen(5)
-                    # Now wait for client connection.
-   c, addr = s.accept()     # Establish connection with client.
-   print ('IR Monitor got connection from', addr)
+#    s.listen(5)
+#                     # Now wait for client connection.
+#    c, addr = s.accept()     # Establish connection with client.
+#    print ('IR Monitor got connection from', addr)
 
-   GPIO.setwarnings(False)
-   GPIO.setmode(GPIO.BCM)
-   GPIO.setup(3, GPIO.OUT, initial=GPIO.LOW)
-   GPIO.setup(4 ,GPIO.IN, pull_up_down =GPIO.PUD_DOWN)
-   GPIO.add_event_detect(4, GPIO.BOTH)
-   GPIO.add_event_callback(4, my_callback)
+#    GPIO.setwarnings(False)
+#    GPIO.setmode(GPIO.BCM)
+#    GPIO.setup(3, GPIO.OUT, initial=GPIO.LOW)
+#    GPIO.setup(4 ,GPIO.IN, pull_up_down =GPIO.PUD_DOWN)
+#    GPIO.add_event_detect(4, GPIO.BOTH)
+#    GPIO.add_event_callback(4, my_callback)
 
-   while True:
-      pass
+#    while True:
+#       pass
 
-t_monitor = threading.Thread(target=ir_monitor)
-t_monitor.start()
+# t_monitor = threading.Thread(target=ir_monitor)
+# t_monitor.start()
 
 s.listen(5)                 # Now wait for client connection.
 c, addr = s.accept()     # Establish connection with client.
