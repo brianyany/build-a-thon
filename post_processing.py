@@ -33,7 +33,7 @@ def get_barcode():
 
 def get_ir():
 	GPIO_IR.setup()
-    return GPIO_IR.objectDetected();
+	return GPIO_IR.objectDetected();
 
 sensors = {'humidity':(humidity, get_humidity), 'temperature':(temperature, get_temperature), 'barcode':(barcode, get_barcode), 'ir':(ir, get_ir)}
 
