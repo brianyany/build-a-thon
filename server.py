@@ -8,7 +8,7 @@ import pyttsx3
 
 s = socket.socket()         # Create a socket object
 host = socket.gethostname() # Get local machine name
-port = 31341                  # Reserve a port for your service.
+port = 31337                  # Reserve a port for your service.
 s.bind((host, port))        # Bind to the port
 
 
@@ -35,8 +35,8 @@ while True:
    print ("response given")
 
    # TODO:read the response
-   engine = pyttsx3.init(driverName='nsss')
-   engine.say(msg)
-   engine.runAndWait()
+   # engine = pyttsx3.init(driverName='nsss')
+   # engine.say(msg)
+   # engine.runAndWait()
 
    c.close()                # Close the connection
