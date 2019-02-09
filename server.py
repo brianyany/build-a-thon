@@ -24,10 +24,14 @@ while True:
    c.send(json.dumps(msg).encode('utf-8'))
    print('message send')
 
-   #TODO: post processing 
+   # TODO: post processing
 
-   msg = 'The temperature is 17 degrees'
+   # TODO: fetch sensor data
+
+   msg = 'The temperature is 17 degrees'     # TODO: compose sentence as response 
    c.send(json.dumps(msg).encode('utf-8'))
    print ("response given")
+
+   # TODO:read the response
 
    c.close()                # Close the connection
