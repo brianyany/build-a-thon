@@ -4,9 +4,9 @@
 # TODO: import sensor reading stuff
 import Adafruit_DHT
 
-humidity = ['humidity']
+humidity = ['humidity', 'humid']
 
-temperature = ['temperature']
+temperature = ['temperature', 'hot', 'cold', 'weather']
 
 barcode = ['price']
 
