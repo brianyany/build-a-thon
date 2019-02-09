@@ -1,6 +1,6 @@
 import pyttsx3
 
-engine = pyttsx3.init(driverName='nsss')
+engine = pyttsx3.init(driverName='sapi5')
 engine.say("The temperature is seventy degree")
 engine.runAndWait()
 

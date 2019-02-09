@@ -2,6 +2,8 @@
 
 import socket               # Import socket module
 import json
+import pyttsx3
+
 
 
 s = socket.socket()         # Create a socket object
@@ -33,5 +35,8 @@ while True:
    print ("response given")
 
    # TODO:read the response
+   engine = pyttsx3.init(driverName='nsss')
+   engine.say(msg)
+   engine.runAndWait()
 
    c.close()                # Close the connection
