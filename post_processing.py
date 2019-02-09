@@ -24,13 +24,13 @@ def get_humidity():
 	sensor = Adafruit_DHT.DHT22
 	pin = 2
 	humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
-    return humidity
+	return humidity
 
 def get_temperature():
 	sensor = Adafruit_DHT.DHT22
 	pin = 2
 	humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
-    return temperature
+	return temperature
 
 def get_barcode():
     return
