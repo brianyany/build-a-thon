@@ -2,7 +2,7 @@
 
 import socket               # Import socket module
 import json
-import pyttsx3
+from post_processing import *
 
 
 
@@ -26,17 +26,10 @@ while True:
    c.send(json.dumps(msg).encode('utf-8'))
    print('message send')
 
-   # TODO: post processing
+   keyword, sensor_value = check_for_keyword(text)
 
-   # TODO: fetch sensor data
-
-   msg = 'The temperature is 17 degrees'     # TODO: compose sentence as response 
+   msg = (keyword, sensor_value)
    c.send(json.dumps(msg).encode('utf-8'))
    print ("response given")
-
-   # TODO:read the response
-   # engine = pyttsx3.init(driverName='nsss')
-   # engine.say(msg)
-   # engine.runAndWait()
 
    c.close()                # Close the connection

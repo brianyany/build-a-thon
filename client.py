@@ -10,6 +10,14 @@ import json
 import speech_recognition as sr
 import time
 
+import pyaudio
+
+p = pyaudio.PyAudio()
+for i in range(p.get_device_count()):
+    dev = p.get_device_info_by_index(i)
+    print((i,dev['name'],dev['maxInputChannels']))
+
+
 
 
 s = socket.socket()         # Create a socket object
@@ -17,25 +25,10 @@ host = socket.gethostname() # Get local machine name        # TODO: change to pi
 port = 31337                # Reserve a port for your service.
 
 s.connect((host, port))
-# msg = 'what is the temperature'         #TODO: retrive sentence from speech to text 
-# s.send(json.dumps(msg).encode('utf-8'))     # sentece the request
-
-# data = s.recv(1024)             # wait for ack
-# text = json.loads(data.decode('utf-8'))
-# print (text)
-
-# data = s.recv(1024)             # wait for response, might not be necessary 
-# text = json.loads(data.decode('utf-8'))
-# print (text)
-
-# s.close()                     # Close the socket when done
-
-
-
 
 # obtain audio from the microphone
 r = sr.Recognizer()
-mic = sr.Microphone()
+mic = sr.Microphone(device_index=5)
 
 # Setup Block
 # Let's calibrate the microphone for ambient noise first.
@@ -80,3 +73,4 @@ print("We stopped listening.")
 # calling this function requests that the background listener stop listening
 stop_listening(wait_for_stop=False)
 
+s.close()                     # Close the socket when done
