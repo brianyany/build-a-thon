@@ -3,6 +3,9 @@
 
 # TODO: import sensor reading stuff
 import Adafruit_DHT
+import RPi.GPIO as GPIO
+import time
+
 
 humidity = ['humidity', 'humid']
 
@@ -11,6 +14,7 @@ temperature = ['temperature', 'hot', 'cold', 'weather']
 barcode = ['price']
 
 ir = ['object']
+
 
 def get_humidity():
 	sensor = Adafruit_DHT.DHT22

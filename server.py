@@ -4,6 +4,7 @@
 import socket               # Import socket module
 import json
 from post_processing import *
+import threading
 
 
 
@@ -16,6 +17,35 @@ s.bind((host, port))        # Bind to the port
 s.listen(5)                 # Now wait for client connection.
 c, addr = s.accept()     # Establish connection with client.
 print ('Got connection from', addr)
+
+def my_callback():
+   print("ir!!!")
+   c.send(json.dumps('irdetected').encode('utf-8'))
+
+def ir_monitor():
+   s = socket.socket()         # Create a socket object
+   host = "172.16.117.108" # Get local machine name
+   port = 31356                  # Reserve a port for your service.
+   s.bind((host, port))        # Bind to the port
+
+
+   s.listen(5)                 # Now wait for client connection.
+   c, addr = s.accept()     # Establish connection with client.
+   print ('Got connection from', addr)
+
+   GPIO.setwarnings(False)
+   GPIO.setmode(GPIO.BCM)
+   GPIO.setup(3, GPIO.OUT, initial=GPIO.LOW)
+   GPIO.setup(4 ,GPIO.IN, pull_up_down =GPIO.PUD_DOWN)
+   GPIO.add_event_detect(4, GPIO.BOTH)
+   GPIO.add_event_callback(4, my_callback)
+
+   while True:
+      pass
+
+t_monitor = threading.Thread(target=ir_monitor)
+t_monitor.start()
+
 
 while True:
    # data, server = s.recvfrom(4096)
