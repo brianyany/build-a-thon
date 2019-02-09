@@ -10,22 +10,17 @@ import threading
 
 s = socket.socket()         # Create a socket object
 host = "172.16.117.108" # Get local machine name
-port = 31337                  # Reserve a port for your service.
+port = 12000                  # Reserve a port for your service.
 s.bind((host, port))        # Bind to the port
 
-
-s.listen(5)                 # Now wait for client connection.
-c, addr = s.accept()     # Establish connection with client.
-print ('Got connection from', addr)
-
-def my_callback():
+def my_callback(a):
    print("ir!!!")
    c.send(json.dumps('irdetected').encode('utf-8'))
 
 def ir_monitor():
    s = socket.socket()         # Create a socket object
    host = "172.16.117.108" # Get local machine name
-   port = 31356                  # Reserve a port for your service.
+   port = 13999                  # Reserve a port for your service.
    s.bind((host, port))        # Bind to the port
 
 
@@ -45,6 +40,10 @@ def ir_monitor():
 
 t_monitor = threading.Thread(target=ir_monitor)
 t_monitor.start()
+
+s.listen(5)                 # Now wait for client connection.
+c, addr = s.accept()     # Establish connection with client.
+print ('Got connection from', addr)
 
 
 while True:
