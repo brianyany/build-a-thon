@@ -11,7 +11,7 @@ barcode = ['price']
 
 ir = ['object']
 
-sensors = {'humidity':(humidity, get_humidity), 'temperature':(temperature, get_temperature), 'barcode'=(barcode, get_barcode), 'ir'=(ir, get_ir)}
+sensors = {'humidity':(humidity, get_humidity), 'temperature':(temperature, get_temperature), 'barcode':(barcode, get_barcode), 'ir':(ir, get_ir)}
 
 def check_for_keyword(words):
     words = words.split(' ')
