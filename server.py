@@ -23,8 +23,10 @@ def ir_monitor():
    port = 13999                  # Reserve a port for your service.
    s.bind((host, port))        # Bind to the port
 
+   print ('IR Monitor connection waiting')
 
-   s.listen(5)                 # Now wait for client connection.
+   s.listen(5)
+                    # Now wait for client connection.
    c, addr = s.accept()     # Establish connection with client.
    print ('IR Monitor got connection from', addr)
 
