@@ -42,10 +42,13 @@ while True:
 
    if text:
       keyword, sensor_value = check_for_keyword(text)
-      print(sensor_value)
-      msg = (keyword, sensor_value)
-      c.send(json.dumps(msg).encode('utf-8'))
-      print ("response given")
+      if keyword is None:
+         c.send(json.dumps('invalid').encode('utf-8'))
+      else:
+         print(sensor_value)
+         msg = (keyword, sensor_value)
+         c.send(json.dumps(msg).encode('utf-8'))
+         print ("response given")
    else:
       c.send(json.dumps('invalid').encode('utf-8'))
 

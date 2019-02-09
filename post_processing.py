@@ -40,3 +40,5 @@ def check_for_keyword(words):
             	value = v[1]()
             	print(value)
             	return k, value
+
+    return None, None
