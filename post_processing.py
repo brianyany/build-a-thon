@@ -5,7 +5,7 @@
 import Adafruit_DHT
 import RPi.GPIO as GPIO
 import time
-
+import GPIO_IR
 
 humidity = ['humidity', 'humid']
 
@@ -13,7 +13,7 @@ temperature = ['temperature', 'hot', 'cold', 'weather']
 
 barcode = ['price']
 
-ir = ['object']
+ir = ['door']
 
 
 def get_humidity():
@@ -32,7 +32,7 @@ def get_barcode():
     return
 
 def get_ir():
-    return
+    
 
 sensors = {'humidity':(humidity, get_humidity), 'temperature':(temperature, get_temperature), 'barcode':(barcode, get_barcode), 'ir':(ir, get_ir)}
 
