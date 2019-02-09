@@ -36,5 +36,6 @@ def check_for_keyword(words):
     for k,v in sensors.items():
         for w in words:
             if w in v[0]:
-                return k, v[1]()
-    
+            	value = v[1]()
+            	print(value)
+                return k, value
