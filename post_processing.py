@@ -1,6 +1,7 @@
 # post_processing.py 
 
 # TODO: import sensor reading stuff
+import Adafruit_DHT
 
 humidity = ['humidity']
 
@@ -20,10 +21,16 @@ def check_for_keyword(words):
                 return k, v[1]()
 
 def get_humidity():
-    return 
+	sensor = Adafruit_DHT.DHT22
+	pin = 2
+	humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+    return humidity
 
 def get_temperature():
-    return 
+	sensor = Adafruit_DHT.DHT22
+	pin = 2
+	humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+    return temperature
 
 def get_barcode():
     return

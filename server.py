@@ -41,6 +41,8 @@ while True:
 
    keyword, sensor_value = check_for_keyword(text)
 
+   print(sensor_value)
+
    msg = (keyword, sensor_value)
    c.send(json.dumps(msg).encode('utf-8'))
    print ("response given")
