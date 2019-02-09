@@ -31,8 +31,9 @@ def get_temperature():
 
 def get_barcode():
 	print('read barcode')
-    code = GPIO_Barcode.barcode_reader()
-    return code
+	code = GPIO_Barcode.barcode_reader()
+	print(code)
+	return code
 
 def get_ir():
 	GPIO_IR.setup()
