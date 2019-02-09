@@ -31,7 +31,7 @@ def ir_monitor():
 
    s.listen(5)                 # Now wait for client connection.
    c, addr = s.accept()     # Establish connection with client.
-   print ('Got connection from', addr)
+   print ('IR Monitor got connection from', addr)
 
    GPIO.setwarnings(False)
    GPIO.setmode(GPIO.BCM)
