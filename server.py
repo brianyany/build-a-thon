@@ -13,7 +13,7 @@ host = "172.16.117.108" # Get local machine name
 port = 12000                  # Reserve a port for your service.
 s.bind((host, port))        # Bind to the port
 
-def my_callback(a):
+def my_callback(self):
    print("ir!!!")
    c.send(json.dumps('irdetected').encode('utf-8'))
 
