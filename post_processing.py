@@ -6,7 +6,6 @@ import Adafruit_DHT
 import RPi.GPIO as GPIO
 import time
 import GPIO_IR
-import GPIO_Barcode
 
 humidity = ['humidity', 'humid']
 
@@ -16,6 +15,28 @@ barcode = ['scan']
 
 ir = ['door']
 
+def barcode_reader():
+    global scan, scanned
+    inp = input('')
+    if inp == "028400090896":
+        scan = 'Doritos Nacho Cheese snack size'
+    if inp == "844660026617":
+        scan = 'Monoprice VGA to HDMI'
+    if inp == "845156001118":
+        scan = 'Sparkfun electronics resistor kit 500'
+    if inp == "640522710850":
+        scan = 'Raspberry pi 3 model 3 motherboard'
+    if inp == "025000058806":
+        scan = 'Minute Maid Pink Lemonade 12 ounce'
+    if inp == "028400040112":
+        scan = 'Cheetos crunchy snack size original'
+    if inp == "X001CYIACJ":
+        scan = 'Wifi Nano 11 AC adapter usb'
+    if inp == "028400090858":
+        scan = 'Lays Classic potato chips snack size'
+    
+    scanned=True
+    return scan
 
 def get_humidity():
 	sensor = Adafruit_DHT.DHT22
@@ -31,7 +52,7 @@ def get_temperature():
 
 def get_barcode():
 	print('read barcode')
-	code = GPIO_Barcode.barcode_reader()
+	code = barcode_reader()
 	print(code)
 	return code
 
