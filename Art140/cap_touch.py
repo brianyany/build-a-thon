@@ -137,28 +137,31 @@ def setup(address):
 
     bus.write_byte_data(address, ELE_CFG, 0x0C)  # Enables all 12 Electrodes    
 
-#---- main -----#
-TOU_THRESH = 50
-REL_THRESH = 70
-setup(0x5a)
-last_touched = readData(0x5a)
+
+if __name__ == '__main__':
+    TOU_THRESH = 50
+    REL_THRESH = 100
+    setup(0x5a)
 
 
-print ("Press Ctrl C to end")
+    print ("Press Ctrl C to end")
 
-lastTap = 0
+    lastTap = 0
 
-while True:
-  currentTap = readData(0x5a)
-  for i in range(12):
-    pin_bit = 1 << i
-    #print ("message is: "+ str(currentTap1)+str(currentTap0) ) 
-    if currentTap & pin_bit and not lastTap & pin_bit:
-      print ("Touched: " + str(i)) 
-    if not currentTap & pin_bit and lastTap & pin_bit:
-      print ("Released: " + str(i))
-  lastTap = currentTap
-  time.sleep(0.1)
+    while True:
+      currentTap = readData(0x5a)
+      for i in range(12):
+        pin_bit = 1 << i
+        #print ("message is: "+ str(currentTap1)+str(currentTap0) ) 
+        if currentTap & pin_bit and not lastTap & pin_bit:
+          print ("Touched: " + str(i)) 
+        if not currentTap & pin_bit and lastTap & pin_bit:
+          print ("Released: " + str(i))
+      lastTap = currentTap
+      time.sleep(0.1)    
+
+
+
 
 
        

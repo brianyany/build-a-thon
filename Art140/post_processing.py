@@ -2,41 +2,85 @@
 # post_processing.py 
 
 # TODO: import sensor reading stuff
-import Adafruit_DHT
+
 import RPi.GPIO as GPIO
 import time
 import GPIO_IR
+import random
 
-humidity = ['humidity', 'humid']
+door = ['door','lock']
 
-temperature = ['temperature', 'hot', 'cold', 'weather']
+unlock = ['unlock','unlocked']
 
-ir = ['door']
+livingroom = ['livingroom', 'living'] 
 
+study = ['study']
 
-def get_humidity():
-    sensor = Adafruit_DHT.DHT22
-    pin = 2
-    humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
-    return humidity
+shower = ['bathroom', 'shower']
 
-def get_temperature():
-    sensor = Adafruit_DHT.DHT22
-    pin = 2
-    humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
-    return temperature
+night =['night','sleep']
 
-def get_barcode():
-    print('read barcode')
-    code = barcode_reader()
-    print(code)
-    return code
+plant = ['plant', 'watering','water', 'plants']
 
-def get_ir():
-    GPIO_IR.setup()
-    return GPIO_IR.objectDetected();
+cat = ['cat']
 
-sensors = {'humidity':(humidity, get_humidity), 'temperature':(temperature, get_temperature), 'barcode':(barcode, get_barcode), 'ir':(ir, get_ir)}
+trash =['recycle','bin','trash','waste']
+
+thanks = ['thanks','thank']
+
+music = ['music']
+
+def lock_door():
+    global doorlock
+    if(!doorlock)
+        return "your door is unlocked, locking it for you.";
+    else:
+        return "your door is securely locked.";
+    
+def unlock_door():
+    global doorlock
+    if(doorlock)
+        return "welcome home, unlocking the door for you.";
+    else:
+        return "your door is not locked. Wanna lock it?";
+
+def livingroom():
+    global light_livingroom
+    global light_livingroom_pin
+    if(light_livingroom)
+        
+        return "turning living room light off. Good night."
+    else:
+        
+        return "turning living room light on. want some music?"
+    
+def study():
+    global light_study
+    global light_study_pin
+    if(light_study)
+        
+        return "turning study light off. Good work today."
+    else:
+        
+        return "turning study light on. want some music?"
+    
+def bathroom():
+    global light_bathroom
+    global light_bathroom_pin
+    if(light_bathroom)
+        
+        return "turning living room light off. Good night."
+    else:
+        
+        return "turning living room light on. want some music?"
+
+def throw_trash():
+    ran = random.randint()
+    if ran%5 ==0:
+        return "your door is unlocked.";
+    else:
+        return "your door is securely locked.";
+sensors = {'humidity':(humidity, get_humidity), 'temperature':(temperature, get_temperature), 'barcode':(barcode, get_barcode), 'ir':(door, get_door)}
 
 def check_for_keyword(words):
     words = words.split(' ')
