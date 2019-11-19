@@ -5,7 +5,6 @@ import socket               # Import socket module
 import json
 from post_processing import *
 import threading
-from cap_touch import *
 
 
 s = socket.socket()         # Create a socket object
@@ -46,9 +45,6 @@ s.bind((host, port))        # Bind to the port
 s.listen(5)                 # Now wait for client connection.
 c, addr = s.accept()     # Establish connection with client.
 print ('Got connection from', addr)
-TOU_THRESH = 50
-REL_THRESH = 70
-setup(0x5a)
 
 
 print ("Press Ctrl C to end")
@@ -58,18 +54,7 @@ lastTap = 0
 
 while True:
    # data, server = s.recvfrom(4096)
-    currentTap = readData(0x5a)
-    for i in range(12):
-        pin_bit = 1 << i
-        #print ("message is: "+ str(currentTap1)+str(currentTap0) ) 
-        if currentTap & pin_bit and not lastTap & pin_bit:
-          print ("Touched: " + str(i)) 
-        if not currentTap & pin_bit and lastTap & pin_bit:
-          print ("Released: " + str(i))
-        lastTap = currentTap
-        time.sleep(0.1)
-    if msg:
-      c.send(json.dumps(msg).encode('utf-8'))
+    
     data = c.recv(1024)
     if not data:
       continue
